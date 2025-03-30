@@ -1,13 +1,11 @@
-pipeline {
+pipeline { 
     agent any
 
     stages {
         stage('Build') {
             steps {
-                echo 'This stage compiles and packages the application using a build automation tool like Maven or Gradle.'
-                echo 'For Java projects, Maven (mvn clean package) can be used.'
-                echo 'For JavaScript projects, npm or yarn can handle the build process.'
-                echo 'Building the application...'
+                echo 'Using Maven/Gradle for building the application.'
+                echo 'Building the application with Maven/Gradle...'
             }
         }
 
@@ -15,7 +13,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        echo 'Running unit and integration tests...'
+                        echo 'Running tests with JUnit, Selenium, or Mockito...'
                         
                         // Simulate test execution
                         sh 'echo "Running tests..."'
@@ -50,31 +48,37 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                echo 'Performing static code analysis...'
+                echo 'Performing static code analysis using SonarQube...'
+		echo 'https://docs.sonarsource.com/sonarqube-server/latest/'
             }
         }
 
         stage('Security Scan') {
             steps {
-                echo 'Performing security scan...'
+                echo 'Performing security scan using OWASP Dependency-Check or Trivy...'
+		echo 'https://plugins.jenkins.io/dependency-check-jenkins-plugin/'
             }
         }
 
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying to staging environment...'
+                echo 'Deploying to staging using Docker/Kubernetes/Ansible...'
+		echo 'https://www.jenkins.io/doc/book/pipeline/docker/'
             }
         }
 
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests in staging environment...'
+                echo 'Running integration tests on staging using Postman (Newman) or Selenium...'
+		echo 'https://www.selenium.dev/documentation/'
             }
         }
 
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying application to production environment...'
+                echo 'Deploying application to production using Docker, AWS CodeDeploy, or Kubernetes...'
+		echo 'https://www.jenkins.io/doc/book/pipeline/docker/'
+
             }
         }
     }
